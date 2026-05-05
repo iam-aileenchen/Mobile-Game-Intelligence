@@ -155,7 +155,8 @@
   .tab-btn:nth-child(1),
   .tab-btn:nth-child(2),
   .tab-btn:nth-child(3),
-  .tab-btn:nth-child(4) {
+  .tab-btn:nth-child(4),
+  .tab-btn:nth-child(5) {
     background: rgba(10,110,189,0.25);
     color: #7bbfff;
   }
@@ -163,7 +164,8 @@
   .tab-btn:nth-child(1):hover,
   .tab-btn:nth-child(2):hover,
   .tab-btn:nth-child(3):hover,
-  .tab-btn:nth-child(4):hover {
+  .tab-btn:nth-child(4):hover,
+  .tab-btn:nth-child(5):hover {
     background: rgba(10,110,189,0.45);
     color: #fff;
   }
@@ -171,7 +173,8 @@
   .tab-btn:nth-child(1).active,
   .tab-btn:nth-child(2).active,
   .tab-btn:nth-child(3).active,
-  .tab-btn:nth-child(4).active {
+  .tab-btn:nth-child(4).active,
+  .tab-btn:nth-child(5).active {
     background: var(--accent-blue);
     color: #ffffff;
     box-shadow: 0 3px 0 #064d85;
@@ -478,6 +481,22 @@
     background: var(--accent-blue);
   }
 
+  .obs-card:nth-child(3)::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 5px; height: 100%;
+    background: #00963a;
+  }
+
+  .obs-card:nth-child(4)::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 5px; height: 100%;
+    background: #e87722;
+  }
+
   .obs-label {
     font-family: 'DM Mono', monospace;
     font-size: 10px;
@@ -530,18 +549,51 @@
     letter-spacing: 0.1em;
   }
 
+  .kr-item.market-overview {
+    background: var(--paper-dark);
+    border-left: 4px solid var(--accent-blue);
+    padding-left: 1.25rem;
+    margin-left: -1.25rem;
+  }
+
+  .kr-item.market-overview .kr-game { color: var(--accent-blue); }
+  .kr-item.market-overview .kr-title { color: var(--accent-blue); font-size: 15px; }
+  .kr-item.market-overview .kr-desc { color: #333; }
+
+  .kr-item.market-overview-green {
+    background: var(--paper-dark);
+    border-left: 4px solid #00963a;
+    padding-left: 1.25rem;
+    margin-left: -1.25rem;
+  }
+
+  .kr-item.market-overview-green .kr-game { color: #00963a; }
+  .kr-item.market-overview-green .kr-title { color: #00963a; font-size: 15px; }
+  .kr-item.market-overview-green .kr-desc { color: #333; }
+
+  .kr-item.market-overview-teal {
+    background: var(--paper-dark);
+    border-left: 4px solid #00a878;
+    padding-left: 1.25rem;
+    margin-left: -1.25rem;
+  }
+
+  .kr-item.market-overview-teal .kr-game { color: #00a878; }
+  .kr-item.market-overview-teal .kr-title { color: #00a878; font-size: 15px; }
+  .kr-item.market-overview-teal .kr-desc { color: #333; }
+
   /* ── KOREA TAB & SECTION ── */
-  .tab-btn:nth-child(5) {
+  .tab-btn:nth-child(6) {
     background: rgba(0,140,60,0.22);
     color: #44cc88;
   }
 
-  .tab-btn:nth-child(5):hover {
+  .tab-btn:nth-child(6):hover {
     background: rgba(0,140,60,0.45);
     color: #fff;
   }
 
-  .tab-btn:nth-child(5).active {
+  .tab-btn:nth-child(6).active {
     background: #00963a;
     color: #ffffff;
     box-shadow: 0 3px 0 #005a22;
@@ -575,22 +627,25 @@
     white-space: nowrap;
   }
 
-  .tab-btn:nth-child(6) {
+  .tab-btn:nth-child(7) {
     background: rgba(0,180,120,0.18);
     color: #33ddaa;
   }
 
-  .tab-btn:nth-child(6):hover {
+  .tab-btn:nth-child(7):hover {
     background: rgba(0,180,120,0.4);
     color: #fff;
   }
 
-  .tab-btn:nth-child(6).active {
+  .tab-btn:nth-child(7).active {
     background: #00a878;
     color: #ffffff;
     box-shadow: 0 3px 0 #006a4c;
   }
+
+
   .kr-launch { background: #e6f7ee; color: #1a7a40; border: 1px solid #90d4aa; }
+  .kr-event  { background: #fdf5e0; color: #7a5a00; border: 1px solid #e8d080; }
   .kr-update { background: #e8f0fb; color: #1a4a8a; border: 1px solid #b5cef0; }
   .kr-trend  { background: #f0eaff; color: #5a3a8a; border: 1px solid #c8b5f0; }
   .kr-collab { background: #fdf5e0; color: #7a5a00; border: 1px solid #e8d080; }
@@ -685,6 +740,7 @@
 <nav class="tab-nav">
   <button class="tab-btn active" onclick="showTab('ios')">台港澳 iOS TOP 10</button>
   <button class="tab-btn" onclick="showTab('news')">新上市競品</button>
+  <button class="tab-btn" onclick="showTab('upcoming')">未來上市競品</button>
   <button class="tab-btn" onclick="showTab('events')">版更新訊</button>
   <button class="tab-btn" onclick="showTab('insights')">市場洞察</button>
   <button class="tab-btn" onclick="showTab('korea')">🇰🇷 韓國市場</button>
@@ -781,7 +837,7 @@
           </td>
           <td><span class="genre-tag">休閒消除</span></td>
           <td><span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--muted)">King</span></td>
-          <td style="text-align:right"><span style="font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--muted)">$1.58M</span></td>
+          <td style="text-align:right"><span style="font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--ink)">$1.58M</span></td>
         </tr>
         <tr>
           <td><div class="rank-num">8</div></td>
@@ -826,7 +882,7 @@
       <span class="section-num">02</span>
       <h2 class="section-title">新上市競品</h2>
       <div class="section-rule"></div>
-      <span class="section-date">2026.04 新上市 · 類型或客群重疊</span>
+      <span class="section-date">2026.04 新上市</span>
     </div>
 
     <table class="comp-table">
@@ -848,7 +904,7 @@
           <td>
             <span class="rank-pill strong">暢銷 #6</span> <span class="rank-pill strong">下載 #1</span><br>
           </td>
-          <td><span class="ct-note">武俠 MMORPG，畫面走寫實風格，主打台灣玩家熟悉的江湖情懷，上市即雙榜稱冠，留存數據值得持續追蹤。</span></td>
+          <td><span class="ct-note">武俠 MMORPG，3D 畫面呈現，主打台灣玩家熟悉的江湖情懷，支援國語／廣東話雙語劇情配音帶來更沈浸式體驗，上市即雙榜稱冠，留存數據值得持續追蹤。</span></td>
         </tr>
         <tr>
           <td>
@@ -870,7 +926,7 @@
           <td>
             <span class="rank-pill strong">暢銷 #19</span> <span class="rank-pill strong">下載 #2</span><br>
           </td>
-          <td><span class="ct-note">鬼域探墓主題 RPG，美術走暗黑中式風格，在港澳台及東南亞市場同步上線，並與大甲鎮瀾宮展開跨界合作，題材差異化明顯，次月留存是觀察重點。</span></td>
+          <td><span class="ct-note">鬼域探墓主題 RPG，美術走暗黑中式風格，邀請台灣藝人陳漢典擔任代言人，並與大甲鎮瀾宮展開跨界合作，在港澳台及東南亞市場同步上線，題材差異化明顯，次月留存是觀察重點。</span></td>
         </tr>
         <tr>
           <td>
@@ -903,7 +959,7 @@
           <td>
             <span class="rank-pill strong">暢銷 #41</span> <span class="rank-pill strong">下載 #3</span><br>
           </td>
-          <td><span class="ct-note">森林主題輕度經營，UI 清新療癒，目標客群以女性輕度玩家為主，玩法門檻低，下載成績反映出品類在台灣仍有一定市場空間。</span></td>
+          <td><span class="ct-note">森林主題輕度經營，UI 清新療癒，目標客群以女性輕度玩家為主。祭出震撼業界的「虛實連結」企劃——50,000 束實體鮮花等玩家帶回家，話題行銷大幅帶動下載與社群聲量。</span></td>
         </tr>
         <tr>
           <td>
@@ -914,7 +970,7 @@
           <td>
             <span class="rank-pill strong">暢銷 #48</span> <span class="rank-pill strong">下載 #3</span><br>
           </td>
-          <td><span class="ct-note">FireBoom 發行，考古探墓主題，玩法與題材較為小眾，初期榜單表現穩定，細節資料待補充。</span></td>
+          <td><span class="ct-note">FireBoom 發行，考古探墓主題，玩法與題材較為小眾。開服推出限定「999.9 黃金挖金」活動，以稀缺感強化首月付費轉化，初期榜單表現穩定。</span></td>
         </tr>
         <tr>
           <td>
@@ -1034,6 +1090,117 @@
       <p style="font-size:13px;color:#333;line-height:1.8;">4月份台港澳市場共有 17 款新遊上市，最值得關注的是月底 4/29 上線的<strong>異環（NTE）</strong>，跨 PC、PS5 與手機平台同步上線，台灣 iOS 總榜暢銷達 #20。本月表現最亮眼的本土新遊為<strong>少女喚靈</strong>（積木互動），下載榜 #2、暢銷榜 #40，為本月台系發行商最佳成績。<strong>無盡輪迴：鬼域摸金</strong>以大甲鎮瀾宮跨界合作打出差異化，暢銷 #19 為本月新遊付費轉化最佳。<strong>侏羅紀：重啟</strong>靠重投放拿下下載榜 #1，但付費轉化偏弱，屬 SLG 品類慣見模式。整體而言，4 月 17 款新遊中，表現突出者以本土文化行銷或強 IP 帶動為主。</p>
     </div>
   </section>
+
+  <!-- SECTION UPCOMING: FUTURE RELEASES -->
+  <section class="section" id="tab-upcoming">
+    <div class="section-header">
+      <span class="section-num">—</span>
+      <h2 class="section-title">未來上市競品</h2>
+      <div class="section-rule"></div>
+      <span class="section-date">2026 下半年 · 台港澳市場規劃</span>
+    </div>
+
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>遊戲名稱</th>
+          <th>發行商</th>
+          <th>預計上市</th>
+          <th>類型</th>
+          <th>IP</th>
+          <th>重要事件 / 簡介</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="ct-name">Pokémon Champions</div><div class="ct-pub">寶可夢冠軍</div></td>
+          <td><span class="ct-date">The Pokémon Company</span></td>
+          <td><span class="ct-date">2026 Jun（確認）</span></td>
+          <td><span class="genre-tag">對戰競技</span></td>
+          <td><span style="background:var(--accent);color:#fff;font-family:'DM Mono',monospace;font-size:9px;padding:1px 6px;border-radius:2px;">IP</span></td>
+          <td><span class="ct-note">Switch 版 4/8 先行上市，官方韓國網站確認手機版將於 6 月推出，跨平台對戰免費玩，可連結《Pokémon HOME》帶入歷代培育的寶可夢。</span></td>
+        </tr>
+        <tr>
+          <td><div class="ct-name">藍色星原：旅謠</div><div class="ct-pub">Azur Promilia</div></td>
+          <td><span class="ct-date">NIJIGEN（台港澳）</span></td>
+          <td><span class="ct-date">2026 Q2（預計）</span></td>
+          <td><span class="genre-tag">二次元幻想 RPG</span></td>
+          <td>—</td>
+          <td><span class="ct-note">由《碧藍航線》開發商蠻啾網路製作，NIJIGEN 代理台港澳服，繁中官網已上線並開放預約。2026 台北電玩展首度亮相，4/3 中國展開恒序測試，二次元玩家高度期待。</span></td>
+        </tr>
+        <tr>
+          <td><div class="ct-name">刀劍朝鮮</div><div class="ct-pub">—</div></td>
+          <td><span class="ct-date">VNGGames</span></td>
+          <td><span class="ct-date">2026/6/9 CBT2</span></td>
+          <td><span class="genre-tag">武俠 MMO</span></td>
+          <td>—</td>
+          <td><span class="ct-note">由韓國 GNISOFT 開發，同時是經典《朝鮮俠客傳》IP 續作，VNGGames 代理，6/9 展開二度封測，與天上碑 M 同一開發班底。</span></td>
+        </tr>
+        <tr>
+          <td><div class="ct-name">星布谷地</div><div class="ct-pub">—</div></td>
+          <td><span class="ct-date">HoYoverse</span></td>
+          <td><span class="ct-date">2026 Q3（預計）</span></td>
+          <td><span class="genre-tag">生活模擬 / 農場經營</span></td>
+          <td>—</td>
+          <td><span class="ct-note">HoYoverse 首款慢活遊戲，4/21 展開 CBT2，PC、App Store、Google Play 同步推出。米哈遊跨品類嘗試，主打療癒生活感，受女性玩家高度關注。</span></td>
+        </tr>
+        <tr>
+          <td><div class="ct-name">崩壞：因緣精靈</div><div class="ct-pub">—</div></td>
+          <td><span class="ct-date">HoYoverse</span></td>
+          <td><span class="ct-date">2026 Aug（預計）</span></td>
+          <td><span class="genre-tag">精靈養成冒險策略</span></td>
+          <td><span style="background:var(--accent);color:#fff;font-family:'DM Mono',monospace;font-size:9px;padding:1px 6px;border-radius:2px;">IP</span></td>
+          <td><span class="ct-note">HoYoverse 新作，崩壞 IP 衍生，精靈收集養成 + 自走棋策略玩法。2025/9 首測完成大幅改版，正式版備受期待。</span></td>
+        </tr>
+        <tr>
+          <td><div class="ct-name">魔物獵人：旅人</div><div class="ct-pub">—</div></td>
+          <td><span class="ct-date">騰訊天美</span></td>
+          <td><span class="ct-date">2026 Q3（預計）</span></td>
+          <td><span class="genre-tag">開放世界狩獵動作</span></td>
+          <td><span style="background:var(--accent);color:#fff;font-family:'DM Mono',monospace;font-size:9px;padding:1px 6px;border-radius:2px;">IP</span></td>
+          <td><span class="ct-note">以《魔物獵人》世界觀為背景的開放世界生存遊戲，4/2–4/22 展開 CBT2，玩家回饋熱烈，正式版時間待官宣。</span></td>
+        </tr>
+        <tr>
+          <td><div class="ct-name">無限大 Ananta</div><div class="ct-pub">—</div></td>
+          <td><span class="ct-date">NetEase</span></td>
+          <td><span class="ct-date">2026 下半年（預計）</span></td>
+          <td><span class="genre-tag">開放世界動作 RPG</span></td>
+          <td>—</td>
+          <td><span class="ct-note">都市開放世界跑酷 RPG，無 Gacha 角色抽卡、採外觀付費，玩法近似異環。2026 年內全球上線確認，繁中台灣版同步待官宣。</span></td>
+        </tr>
+        <tr>
+          <td><div class="ct-name">王者榮耀：世界</div><div class="ct-pub">Honor of Kings: World</div></td>
+          <td><span class="ct-date">騰訊天美</span></td>
+          <td><span class="ct-date">2026 下半年（預計）</span></td>
+          <td><span class="genre-tag">開放世界動作 RPG</span></td>
+          <td><span style="background:var(--accent);color:#fff;font-family:'DM Mono',monospace;font-size:9px;padding:1px 6px;border-radius:2px;">IP</span></td>
+          <td><span class="ct-note">中國手機版已於 4/17 推出，繁中官網（honorofkingsworld.com/zh-tw）正在招募 PC 封測，台灣版確認規劃中，正式上市時間待公告。</span></td>
+        </tr>
+        <tr>
+          <td><div class="ct-name">幻獸帕魯 Mobile</div><div class="ct-pub">Palworld Mobile</div></td>
+          <td><span class="ct-date">Pocket Pair</span></td>
+          <td><span class="ct-date">2026 年底（預計）</span></td>
+          <td><span class="genre-tag">生存冒險捉寵</span></td>
+          <td><span style="background:var(--accent);color:#fff;font-family:'DM Mono',monospace;font-size:9px;padding:1px 6px;border-radius:2px;">IP</span></td>
+          <td><span class="ct-note">Palworld 全球現象級 IP 手遊化，Alpha 封測已於 2025/11 完成，號稱高保真行動版，IP 號召力強，年底推出若順利可望掀起新話題。</span></td>
+        </tr>
+        <tr>
+          <td><div class="ct-name">拉蒂亞的骰子之旅</div><div class="ct-pub">—</div></td>
+          <td><span class="ct-date">聖堂遊戲</span></td>
+          <td><span class="ct-date">2026/5/17</span></td>
+          <td><span class="genre-tag">療癒系冒險 RPG</span></td>
+          <td>—</td>
+          <td><span class="ct-note">台灣團隊自研，獨創骰子玩法，輕量療癒風格，本土獨立開發作品值得關注。</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:1.5rem; background:var(--paper-dark); border-left:3px solid var(--accent-blue); padding:1rem 1.25rem;">
+      <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--accent-blue);letter-spacing:0.15em;margin-bottom:0.5rem;">ANALYST NOTE · 前瞻分析</div>
+      <p style="font-size:13px;color:#333;line-height:1.8;">2026 年下半年台港澳市場將迎來密集重量級新遊。<strong>HoYoverse 雙作齊發</strong>——《星布谷地》搶攻療癒休閒，《崩壞：因緣精靈》切入策略養成，米哈遊品類佈局更趨全面。<strong>王者榮耀：世界</strong>與<strong>無限大 Ananta</strong> 同屬開放世界 ARPG，進一步加劇品類競爭。<strong>幻獸帕魯 Mobile</strong> 與 <strong>Pokémon Champions</strong> 代表捉寵品類正式進場，對 Gacha 核心玩家的時間分配將形成新壓力。<strong>藍色星原：旅謠</strong> 是二次元 RPG 中最具台港澳本地化優勢的新作，NIJIGEN 代理的口碑加持值得持續追蹤。</p>
+    </div>
+  </section>
+
   <section class="section" id="tab-events">
     <div class="section-header">
       <span class="section-num">03</span>
@@ -1045,25 +1212,49 @@
     <div class="comp-list">
       <div class="comp-item">
         <div>
-          <div class="kr-game">異環 NTE</div>
-          <div class="kr-company">艾玩天地 / Hotta Studio</div>
-          <span class="comp-type type-launch">正式上市</span>
+          <div class="kr-game">崩壞：星穹鐵道</div>
+          <div class="kr-company">miHoYo / HoYoverse</div>
+          <span class="comp-type type-update">版本更新</span>
         </div>
         <div>
-          <div class="comp-event" style="font-weight:600;font-size:14px;margin-bottom:4px;">異環（NTE）4/29 全球同步上線，台灣 iOS 總榜暢銷 #20、下載 #1</div>
-          <div class="comp-event">由《幻塔》開發商 Hotta Studio 以虛幻引擎 5 打造，跨 PC、PS5、iOS、Android 四平台同步上線。玩法融合跑酷、戰鬥與都市探索，首週台灣社群話題量爆發，為本月台灣最大新遊事件。</div>
+          <div class="comp-event" style="font-weight:600;font-size:14px;margin-bottom:4px;">3.2 版本「彼岸的繁花」上線，上市兩週年紀念版本</div>
+          <div class="comp-event">星穹鐵道 4 月推出 3.2 版本作為上市兩週年紀念，配合限定五星角色登場，4 月全球手遊收入估達 $58M，為本月全球 Gacha 收入冠軍。週年版本帶動大量流失玩家回流，台港澳市場付費反應同步強勁，為本月台灣收入榜最大驅動力之一。</div>
         </div>
       </div>
 
       <div class="comp-item">
         <div>
-          <div class="kr-game">Garena 三角洲行動</div>
-          <div class="kr-company">Garena / TiMi Studio</div>
-          <span class="comp-type type-event">電競賽事</span>
+          <div class="kr-game">明日方舟</div>
+          <div class="kr-company">Hypergryph / Yostar</div>
+          <span class="comp-type type-collab">聯名活動</span>
         </div>
         <div>
-          <div class="comp-event" style="font-weight:600;font-size:14px;margin-bottom:4px;">台灣賽區總決賽 4/25 落幕，GS 戰隊完成二連霸</div>
-          <div class="comp-event">《Garena 三角洲行動》「烽火地帶」模式台灣賽區總決賽於西門 Westar 舉行，GS 戰隊歷經七局奪冠衛冕。GS、GSO、SL 三隊代表台灣出征 5 月底國際賽，實體電競賽事持續帶動台灣玩家社群活躍度。（巴哈姆特 GNN）</div>
+          <div class="comp-event" style="font-weight:600;font-size:14px;margin-bottom:4px;">明日方舟 × 三麗鷗聯動：Hello Kitty 等角色皮膚限時登場</div>
+          <div class="comp-event">明日方舟本月推出與三麗鷗（Sanrio）的跨界聯動活動，Hello Kitty、布丁狗等人氣角色以限定皮膚形式登場。二次元 × 可愛 IP 的跨界組合在台灣社群引發大量討論，帶動女性玩家付費意願提升，為近期明日方舟社群聲量最高的活動之一。</div>
+        </div>
+      </div>
+
+      <div class="comp-item">
+        <div>
+          <div class="kr-game">明日方舟：終末地</div>
+          <div class="kr-company">Hypergryph / GRYPHLINE</div>
+          <span class="comp-type type-update">版本更新</span>
+        </div>
+        <div>
+          <div class="comp-event" style="font-weight:600;font-size:14px;margin-bottom:4px;">新版本「春曉時」上線，新地區與限定角色解鎖</div>
+          <div class="comp-event">明日方舟：終末地 4 月推出「春曉時」版本，開放新探索區域與限定角色 Banner。自 1 月上市至今持續版本更新，動作 RPG + 基地建造的雙核玩法持續吸引中重度玩家，版本更新節奏穩定，社群討論熱度維持良好。</div>
+        </div>
+      </div>
+
+      <div class="comp-item">
+        <div>
+          <div class="kr-game">燕雲十六聲</div>
+          <div class="kr-company">101 Studio / NetEase</div>
+          <span class="comp-type type-update">版本更新</span>
+        </div>
+        <div>
+          <div class="comp-event" style="font-weight:600;font-size:14px;margin-bottom:4px;">V1.5 版本「山河故人夢」上線，大世界地圖大幅擴充</div>
+          <div class="comp-event">燕雲十六聲 V1.5 版本帶來大規模大世界地圖擴充，新增城鎮、支線任務與季節性天候系統，被玩家評為迄今最大規模版本更新。NetEase 在武俠開放世界品類持續深耕，版本內容品質持續提升，帶動台灣社群回流聲量明顯。</div>
         </div>
       </div>
 
@@ -1076,30 +1267,6 @@
         <div>
           <div class="comp-event" style="font-weight:600;font-size:14px;margin-bottom:4px;">NIKKE 3.5 週年「STAR ANIS STORY II」4/30 上線，新 SSR「尼恩：透視之眼」登場</div>
           <div class="comp-event">Level Infinite 宣布《勝利女神：NIKKE》3.5 週年紀念活動正式揭幕，主線劇情「STAR ANIS」後半段展開，限定角色同步登場。週年節點為 Gacha 遊戲核心付費高峰，NIKKE 以穩定的活動節奏維繫台港澳高付費玩家群。（巴哈姆特 GNN）</div>
-        </div>
-      </div>
-
-      <div class="comp-item">
-        <div>
-          <div class="kr-game">無盡輪迴：鬼域摸金</div>
-          <div class="kr-company">POPJOY</div>
-          <span class="comp-type type-launch">新遊上市</span>
-        </div>
-        <div>
-          <div class="comp-event" style="font-weight:600;font-size:14px;margin-bottom:4px;">港澳台及東南亞同步上線，與大甲鎮瀾宮展開跨界合作</div>
-          <div class="comp-event">鬼域探墓主題手遊與台灣知名廟宇大甲鎮瀾宮展開跨界行銷合作，以本土民俗文化打出差異化路線。台灣 iOS 遊戲總榜暢銷 #19，為本月台港澳新遊付費轉化最佳作品之一。</div>
-        </div>
-      </div>
-
-      <div class="comp-item">
-        <div>
-          <div class="kr-game">第七史詩</div>
-          <div class="kr-company">世曼凱 / SUPER CREATIVE</div>
-          <span class="comp-type type-update">版本更新</span>
-        </div>
-        <div>
-          <div class="comp-event" style="font-weight:600;font-size:14px;margin-bottom:4px;">主線 Episode 6 Part.1「終結的輓歌」4/30 上線，新英雄「艾絲黛」登場</div>
-          <div class="comp-event">世曼凱宣布《第七史詩》4 月 30 日推出主線 Episode 6 首章，新英雄「艾絲黛」同步加入。定期主線更新是《第七史詩》維繫長期玩家的核心策略，在台灣維持穩定中度付費用戶群。（巴哈姆特 GNN）</div>
         </div>
       </div>
     </div>
@@ -1116,6 +1283,12 @@
 
     <div class="obs-grid">
       <div class="obs-card">
+        <div class="obs-label">OVERVIEW · 台港澳整體市場</div>
+        <div class="obs-headline">台灣手遊市場 2026 Q1 全球收入排名第 6，廣告競爭強度為全球最高</div>
+        <div class="obs-body">台灣手遊市場 2026 年 Q1 全球收入排名第 6（前五依序為美國、日本、中國、韓國、英國），商店收入約 $7.58B，2025 年全年收入約 $28B 時排名全球第 7，2026 年進一步升至第 6。港澳台地區廣告創意強度為全球最高，SocialPeta 數據顯示每廣告主月均投放達 122 組素材，競爭激烈。台灣 81.4% 網路用戶有手遊習慣（MIC 調查），但 95% 玩家在 30 天內流失，UA 成本 2025 年年增 12%，留存率仍是廠商最大痛點。付費結構高度集中，Top 10 吸走大部分收入，新進遊戲突圍難度持續提升。</div>
+      </div>
+
+      <div class="obs-card">
         <div class="obs-label">TREND · 市場趨勢</div>
         <div class="obs-headline">SLG 品類在台灣的付費實力持續被低估</div>
         <div class="obs-body">本月 Sensor Tower 數據顯示，Century Games 旗下「寒霜啟示錄」與「Kingshot」雙雙進入台灣收入 Top 3，加上同屬 SLG 的 Last War: Survival 排名第五，三款 SLG 合計佔 Top 10 收入約 40%。SLG 品類的核心付費用戶 ARPU 極高，一旦建立穩定的公會與競爭生態，即使下載量不突出，收入規模仍相當驚人。這對台灣市場的品類規劃具有明確的參考意義。</div>
@@ -1131,13 +1304,6 @@
         <div class="obs-label">INSIGHT · 市場洞察</div>
         <div class="obs-headline">本地文化行銷差異化：大甲鎮瀾宮聯名打出新路線</div>
         <div class="obs-body">《無盡輪迴：鬼域摸金》與大甲鎮瀾宮的跨界合作，是本月台灣市場最具創意的行銷案例。廟宇文化、民俗信仰與手遊的結合，雖非主流，卻精準觸及台灣中生代玩家的情感認同。本月台灣 iOS 暢銷 #19 的成績，相對這款遊戲的規模而言成效顯著。本地化的文化行銷在同質化嚴重的手遊市場中仍有突破空間，值得作為參考案例。</div>
-      </div>
-    </div>
-
-      <div class="obs-card">
-        <div class="obs-label">OVERVIEW · 台港澳整體市場</div>
-        <div class="obs-headline">台灣手遊市場 2025 年收入達 $13.4 億美元，廣告創意強度為全球最高</div>
-        <div class="obs-body">Statista 數據顯示台灣手遊市場 2025 年收入達 $13.4 億美元，佔整體遊戲市場逾 55%，預計 2026-2033 年 CAGR 為 8.31%。台港澳地區合計 GDP 近 $1.3 兆美元，港澳人均 ARPU 超 $70，為亞洲變現效率最高的市場之一。SocialPeta 2026 報告指出，港澳台地區廣告創意強度為全球最高，每個廣告主月均投放達 122 組素材，競爭激烈。台灣 81.4% 網路用戶有手遊習慣（MIC 調查），但 95% 玩家在 30 天內流失，留存率為廠商最大痛點。付費結構高度集中，Top 10 吸收大部分收入，新進遊戲突圍難度持續提升。</div>
       </div>
     </div>
   </section>
@@ -1200,7 +1366,7 @@
         </div>
       </div>
 
-      <div class="kr-item">
+      <div class="kr-item market-overview-green">
         <div>
           <div class="kr-game">韓國整體市場</div>
           <div class="kr-company">Sensor Tower / AppMagic 數據</div>
@@ -1272,15 +1438,15 @@
         </div>
       </div>
 
-      <div class="kr-item">
+      <div class="kr-item market-overview-teal">
         <div>
           <div class="kr-game">SEA 整體市場</div>
           <div class="kr-company">Ampverse / Sensor Tower / Manila Times</div>
           <span class="kr-type kr-trend">整體趨勢</span>
         </div>
         <div>
-          <div class="kr-title">東南亞遊戲市場 2026 年規模達 $148 億，行動遊戲佔 70%</div>
-          <div class="kr-desc">Mordor Intelligence 最新報告（2026）顯示，東南亞遊戲市場總規模達 $148.6 億，行動平台佔 70.78%。Manila Times 4/26 報導指出，預計 2030 年市場規模將達 $160 億，以印尼（29.45%）為最大市場，泰國成長速度最快。290 萬名玩家的基數為廣告與 UA 投放提供龐大機會。</div>
+          <div class="kr-title">東南亞遊戲市場 2025 年收入約 $66 億，手遊佔 70%，預計 2030 年翻增至 $160 億</div>
+          <div class="kr-desc">Ampverse 2026 年報告及 Manila Times 4/26 報導顯示，東南亞遊戲市場（含PC/主機/手遊）2025 年整體收入約 $66 億，手遊佔其中約 70%，即約 $46 億。預計 2030 年市場規模將成長至 $160 億，年複合成長率約 16%。印尼為最大市場（佔比 29.45%，2026 年預估貢獻 $43.8 億），泰國成長速度最快。290 萬名玩家基數為廣告與 UA 投放提供龐大機會。</div>
         </div>
       </div>
     </div>
@@ -1303,7 +1469,7 @@
 <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">^</button>
 
 <script>
-  const TAB_MAP = { ios: 'tab-ios', news: 'tab-news', events: 'tab-events', insights: 'tab-insights', korea: 'tab-korea', sea: 'tab-sea' };
+  const TAB_MAP = { ios: 'tab-ios', news: 'tab-news', upcoming: 'tab-upcoming', events: 'tab-events', insights: 'tab-insights', korea: 'tab-korea', sea: 'tab-sea' };
   const ALL_IDS = Object.values(TAB_MAP);
 
   function updateHeaderHeights() {
@@ -1326,6 +1492,7 @@
     document.querySelectorAll('.tab-btn').forEach((btn, i) => {
       btn.classList.toggle('active', Object.keys(TAB_MAP)[i] === key);
     });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   const btn = document.getElementById('backToTop');
