@@ -720,6 +720,150 @@
   .rank-table tbody tr:nth-child(8) { animation-delay: 0.26s; }
   .rank-table tbody tr:nth-child(9) { animation-delay: 0.29s; }
   .rank-table tbody tr:nth-child(10) { animation-delay: 0.32s; }
+
+  /* ══════════════════════════════════
+     RWD — Tablet (max 900px)
+  ══════════════════════════════════ */
+  @media (max-width: 900px) {
+    .page-wrap { padding: 0 1.5rem; }
+
+    .masthead { grid-template-columns: 1fr auto; }
+    .masthead-left { padding: 1.25rem 1.5rem 1rem; }
+    .masthead-right { padding: 1rem 1.5rem; min-width: 120px; }
+    .pub-name { font-size: 36px; }
+    .issue-month { font-size: 38px; }
+    .issue-year { font-size: 22px; }
+
+    .tab-nav { padding: 0.5rem 1.5rem; gap: 0.35rem; flex-wrap: wrap; }
+    .tab-btn { font-size: 10px; padding: 0.4rem 0.9rem; }
+
+    .obs-grid { grid-template-columns: 1fr; }
+    .obs-grid .obs-card:last-child:nth-child(odd) { grid-column: auto; }
+
+    .kr-item { grid-template-columns: 130px 1fr; }
+    .comp-item { grid-template-columns: 120px 1fr; }
+
+    .footer { padding: 1rem 1.5rem; }
+  }
+
+  /* ══════════════════════════════════
+     RWD — Mobile (max 600px)
+  ══════════════════════════════════ */
+  @media (max-width: 600px) {
+    body { font-size: 14px; }
+
+    .page-wrap { padding: 0 1rem; }
+
+    /* Masthead：改為上下堆疊 */
+    .masthead {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+    }
+    .masthead-left {
+      padding: 1rem 1rem 0.5rem;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+    }
+    .masthead-right {
+      padding: 0.5rem 1rem 0.75rem;
+      flex-direction: row;
+      align-items: baseline;
+      gap: 0.75rem;
+      min-width: unset;
+    }
+    .pub-name { font-size: 26px; white-space: normal; }
+    .pub-sub { font-size: 9px; letter-spacing: 0.1em; margin-top: 5px; }
+    .issue-month { font-size: 28px; }
+    .issue-year { font-size: 18px; }
+    .issue-date { font-size: 10px; }
+
+    /* Tab 導覽 */
+    .tab-nav {
+      padding: 0.4rem 1rem;
+      gap: 0.3rem;
+      flex-wrap: wrap;
+      top: var(--masthead-height, 90px);
+    }
+    .tab-btn { font-size: 9px; padding: 0.35rem 0.7rem; letter-spacing: 0.04em; }
+
+    /* Section */
+    .section { padding: 1.5rem 0; }
+    .section-title { font-size: 22px; }
+    .section-header { gap: 0.5rem; margin-bottom: 1.2rem; }
+
+    /* 排行榜表格：手機改為卡片式 */
+    .rank-table { display: block; }
+    .rank-table thead { display: none; }
+    .rank-table tbody { display: flex; flex-direction: column; gap: 0.75rem; }
+    .rank-table tbody tr {
+      display: grid;
+      grid-template-columns: 40px 1fr auto;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      border-left: none;
+      animation: none;
+    }
+    .rank-table tbody tr:hover { border-left: none; background: var(--accent-dim); }
+    .rank-table td { padding: 0; }
+    .rank-table td:nth-child(3),
+    .rank-table td:nth-child(4) { display: none; } /* 隱藏類型和發行商欄 */
+    .rank-table td:nth-child(5) { text-align: right; font-size: 12px; }
+    .rank-num { font-size: 20px; }
+    .game-name { font-size: 14px; }
+    .game-pub { font-size: 10px; }
+
+    /* comp-table 手機改卡片式 */
+    .comp-table { display: block; }
+    .comp-table thead { display: none; }
+    .comp-table tbody { display: flex; flex-direction: column; gap: 0; }
+    .comp-table tbody tr {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      gap: 0.4rem;
+    }
+    .comp-table td { padding: 0; }
+    .ct-note { font-size: 12px; }
+
+    /* 遊戲新訊 */
+    .comp-item { grid-template-columns: 1fr; gap: 0.5rem; padding: 1rem 0; }
+    .comp-company { font-size: 10px; }
+    .comp-game { font-size: 14px; }
+    .comp-event { font-size: 12px; }
+
+    /* 市場洞察 */
+    .obs-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .obs-card { padding: 1.25rem; }
+    .obs-headline { font-size: 15px; }
+    .obs-body { font-size: 12px; }
+
+    /* 韓國/東南亞 */
+    .kr-item { grid-template-columns: 1fr; gap: 0.5rem; padding: 1rem 0; }
+    .kr-game { font-size: 14px; }
+    .kr-title { font-size: 13px; }
+    .kr-desc { font-size: 12px; }
+    .kr-item.market-overview,
+    .kr-item.market-overview-green,
+    .kr-item.market-overview-teal {
+      margin-left: 0;
+      padding-left: 1rem;
+    }
+
+    /* Footer */
+    .footer { padding: 1rem; flex-direction: column; gap: 0.75rem; align-items: flex-start; }
+    .footer-right { display: none; }
+    .footer-left { font-size: 10px; line-height: 1.7; }
+
+    /* 回頂端按鈕 */
+    .back-to-top { bottom: 1rem; right: 1rem; width: 32px; height: 32px; font-size: 14px; }
+
+    /* Analyst note */
+    div[style*="border-left:3px solid"] { padding: 0.75rem 1rem; }
+  }
+
 </style>
 </head>
 <body>
