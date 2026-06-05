@@ -796,29 +796,44 @@
        欄位：# / 遊戲名稱 / 月收入 / 上月名次
        隱藏：類型(3)、發行商(4)
     ──────────────────────────────── */
-    .rank-table { display: block; }
-    .rank-table thead { display: none; }
-    .rank-table tbody { display: flex; flex-direction: column; gap: 0; }
+    .rank-table { display: block; width: 100%; }
+    .rank-table thead { display: block; }
+    .rank-table thead tr {
+      display: grid;
+      grid-template-columns: 32px 1fr 72px 40px;
+      gap: 0;
+      padding: 0.4rem 0;
+      border-bottom: 2px solid var(--border);
+    }
+    .rank-table thead th { padding: 0 4px; font-size: 9px; letter-spacing: 0.06em; color: var(--muted); }
+    .rank-table th:nth-child(1) { padding-left: 0; }
+    .rank-table th:nth-child(3) { display: none; }
+    .rank-table th:nth-child(4) { display: none; }
+    .rank-table th:nth-child(5) { text-align: right; }
+    .rank-table th:nth-child(6) { text-align: right; }
+    .rank-table tbody { display: block; }
     .rank-table tbody tr {
       display: grid;
-      grid-template-columns: 36px 1fr auto auto;
+      grid-template-columns: 32px 1fr 72px 40px;
       align-items: center;
-      gap: 0.4rem;
-      padding: 0.65rem 0;
+      gap: 0;
+      padding: 0.7rem 0;
       border-bottom: 1px solid var(--border);
       border-left: none;
       animation: none;
     }
     .rank-table tbody tr:hover { border-left: none; background: var(--accent-dim); }
-    .rank-table td { padding: 0; }
+    .rank-table td { padding: 0 4px; }
+    .rank-table td:nth-child(1) { padding-left: 0; }
     .rank-table td:nth-child(3) { display: none; }
     .rank-table td:nth-child(4) { display: none; }
-    .rank-table td:nth-child(5) { text-align: right; font-size: 11px; font-weight: 600; }
+    .rank-table td:nth-child(5) { text-align: right; font-size: 11px; font-weight: 600; white-space: nowrap; }
     .rank-table td:nth-child(6) {
       text-align: right;
       font-family: 'DM Mono', monospace;
       font-size: 10px;
       color: var(--muted);
+      white-space: nowrap;
     }
     .rank-num { font-size: 18px; }
     .game-name { font-size: 13px; }
@@ -826,7 +841,7 @@
 
     /* ────────────────────────────────
        分頁2：新上市競品
-       手機改卡片式，顯示所有欄位包含備註
+       手機改卡片式，強制顯示備註（覆蓋 tablet 隱藏規則）
     ──────────────────────────────── */
     .comp-table { display: block; }
     .comp-table thead { display: none; }
@@ -838,7 +853,9 @@
       border-bottom: 1px solid var(--border);
       gap: 0.35rem;
     }
-    .comp-table td { padding: 0; display: block; }
+    .comp-table td { padding: 0; display: block !important; }
+    .comp-table th,
+    .comp-table td:nth-child(4) { display: block !important; }
     .ct-name { font-size: 14px; font-weight: 600; }
     .ct-pub { font-size: 10px; }
     .ct-date { font-size: 10px; }
@@ -847,20 +864,29 @@
 
     /* ────────────────────────────────
        分頁3：未來上市競品
-       強制顯示所有列，卡片式排列
+       強制獨立處理，覆蓋所有通用規則
     ──────────────────────────────── */
-    #tab-upcoming .comp-table { display: block; }
-    #tab-upcoming .comp-table thead { display: none; }
-    #tab-upcoming .comp-table tbody { display: flex; flex-direction: column; gap: 0; }
+    #tab-upcoming .comp-table { display: block !important; }
+    #tab-upcoming .comp-table thead { display: none !important; }
+    #tab-upcoming .comp-table tbody {
+      display: flex !important;
+      flex-direction: column;
+      gap: 0;
+    }
     #tab-upcoming .comp-table tbody tr {
-      display: flex;
+      display: flex !important;
       flex-direction: column;
       padding: 0.9rem 0;
       border-bottom: 1px solid var(--border);
       gap: 0.3rem;
+      visibility: visible !important;
+      height: auto !important;
     }
-    #tab-upcoming .comp-table td { display: block; padding: 0; }
-    #tab-upcoming .comp-table td:nth-child(5) { display: block; }
+    #tab-upcoming .comp-table td {
+      display: block !important;
+      padding: 0;
+      visibility: visible !important;
+    }
     .genre-tag { font-size: 10px; padding: 1px 6px; }
 
     /* ────────────────────────────────
@@ -1176,7 +1202,9 @@
           <th>IP</th>
           <th>期待程度</th>
           <th>重要事件 / 簡介</th>
-        </tr<tbody>
+        </tr>
+      </thead>
+      <tbody>
         <tr>
           <td><div class="ct-name">少年江湖行</div></td>
           <td><span style="background:#00963a;color:#fff;font-family:'DM Mono',monospace;font-size:9px;padding:2px 7px;border-radius:2px;white-space:nowrap;">已上市</span></td>
@@ -1687,16 +1715,33 @@
 
   updateHeaderHeights();
   window.addEventListener('resize', updateHeaderHeights);
+  window.addEventListener('load', updateHeaderHeights);
+  // 字體載入後重新計算
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(updateHeaderHeights);
+  }
 
   function showTab(key) {
+    const isMobile = window.innerWidth <= 600;
     ALL_IDS.forEach(id => {
       const el = document.getElementById(id);
-      if (el) el.style.display = (id === TAB_MAP[key]) ? '' : 'none';
+      if (!el) return;
+      el.style.display = (id === TAB_MAP[key]) ? '' : 'none';
     });
     document.querySelectorAll('.tab-btn').forEach((btn, i) => {
       btn.classList.toggle('active', Object.keys(TAB_MAP)[i] === key);
     });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // 手機版 upcoming：section 顯示後強制 reflow，讓 CSS flex 規則重新套用
+    if (isMobile && TAB_MAP[key] === 'tab-upcoming') {
+      const el = document.getElementById('tab-upcoming');
+      if (el) {
+        el.style.display = 'none';
+        void el.offsetHeight; // force reflow
+        el.style.display = '';
+      }
+    }
+    setTimeout(() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }, 50);
+    setTimeout(updateHeaderHeights, 100);
   }
 
   const btn = document.getElementById('backToTop');
