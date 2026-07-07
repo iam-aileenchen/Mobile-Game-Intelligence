@@ -791,27 +791,42 @@
     .section-title { font-size: 22px; }
     .section-header { gap: 0.5rem; margin-bottom: 1.2rem; }
 
-    /* 排行榜表格：手機改為卡片式 */
-    .rank-table { display: block; }
+    /* 排行榜表格：手機版 4 欄（名次/遊戲名/收入/上月名次） */
+    .rank-table { display: block; width: 100%; }
     .rank-table thead { display: none; }
-    .rank-table tbody { display: flex; flex-direction: column; gap: 0.75rem; }
+    .rank-table tbody { display: block; }
     .rank-table tbody tr {
       display: grid;
-      grid-template-columns: 40px 1fr auto;
+      grid-template-columns: 32px 1fr 68px 36px;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 0;
+      gap: 0;
+      padding: 0.65rem 0;
       border-bottom: 1px solid var(--border);
       border-left: none;
       animation: none;
     }
     .rank-table tbody tr:hover { border-left: none; background: var(--accent-dim); }
-    .rank-table td { padding: 0; }
-    .rank-table td:nth-child(3),
-    .rank-table td:nth-child(4) { display: none; } /* 隱藏類型和發行商欄 */
-    .rank-table td:nth-child(5) { text-align: right; font-size: 12px; }
-    .rank-num { font-size: 20px; }
-    .game-name { font-size: 14px; }
+    .rank-table td { padding: 0 3px; }
+    .rank-table td:nth-child(1) { padding-left: 0; }
+    .rank-table td:nth-child(3) { display: none; }
+    .rank-table td:nth-child(4) { display: none; }
+    .rank-table td:nth-child(5) {
+      text-align: right;
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+      padding-right: 4px;
+    }
+    .rank-table td:nth-child(6) {
+      text-align: right;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      white-space: nowrap;
+      padding-right: 0;
+    }
+    .rank-num { font-size: 18px; }
+    .game-name { font-size: 13px; }
     .game-pub { font-size: 10px; }
 
     /* comp-table 手機改卡片式 */
@@ -851,6 +866,14 @@
       margin-left: 0;
       padding-left: 1rem;
     }
+
+    /* kr-item 排行榜表格 */
+    .kr-desc table { font-size: 10px; width: 100%; table-layout: fixed; }
+    .kr-desc table td { padding: 3px 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .kr-desc table td:nth-child(1) { width: 24px; }
+    .kr-desc table td:nth-child(2) { width: auto; }
+    .kr-desc table td:nth-child(3) { display: none; }
+    .kr-desc table td:nth-child(4) { width: 58px; text-align: right; font-size: 10px; white-space: nowrap; }
 
     /* Footer */
     .footer { padding: 1rem; flex-direction: column; gap: 0.75rem; align-items: flex-start; }
