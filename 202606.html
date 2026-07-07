@@ -787,10 +787,11 @@
     .tab-btn { font-size: 9px; padding: 0.35rem 0.7rem; letter-spacing: 0.04em; }
 
     /* Section */
-.section-title { font-size: 18px; }
-.section-header { gap: 0.5rem; margin-bottom: 1.2rem; }
-.section-date { font-size: 9px; white-space: nowrap; }
-   
+    .section { padding: 1.5rem 0; }
+    .section-title { font-size: 18px; }
+    .section-header { gap: 0.5rem; margin-bottom: 1.2rem; }
+    .section-date { font-size: 9px; white-space: nowrap; }
+
     /* 排行榜表格：手機版 4 欄（名次/遊戲名/收入/上月名次） */
     .rank-table { display: block; width: 100%; }
     .rank-table thead { display: none; }
@@ -842,6 +843,63 @@
     }
     .comp-table td { padding: 0; }
     .ct-note { font-size: 12px; }
+
+    /* ── 分頁3 未來上市競品：手機版 4 行合併顯示 ── */
+    #tab-upcoming .comp-table tbody tr {
+      display: block;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    /* 行1：遊戲名稱 + 遊戲玩法（類型）同行 */
+    #tab-upcoming .comp-table td:nth-child(1) {
+      display: inline;
+    }
+    #tab-upcoming .comp-table td:nth-child(1)::after {
+      content: "";
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    #tab-upcoming .comp-table td:nth-child(4) {
+      display: inline;
+      margin-left: 0.4rem;
+      vertical-align: middle;
+    }
+    /* 行2：狀態 + 上市日期同行 */
+    #tab-upcoming .comp-table td:nth-child(2) {
+      display: inline;
+    }
+    #tab-upcoming .comp-table td:nth-child(3) {
+      display: inline;
+      margin-left: 0.5rem;
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    #tab-upcoming .comp-table td:nth-child(3)::after {
+      content: "";
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    /* 行3：IP 標籤 + 期待度同行 */
+    #tab-upcoming .comp-table td:nth-child(5) {
+      display: inline;
+    }
+    #tab-upcoming .comp-table td:nth-child(6) {
+      display: inline;
+      margin-left: 0.5rem;
+      font-size: 12px;
+      color: var(--gold);
+    }
+    #tab-upcoming .comp-table td:nth-child(6)::after {
+      content: "";
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    /* 行4：遊戲說明 */
+    #tab-upcoming .comp-table td:nth-child(7) {
+      display: block;
+    }
+    #tab-upcoming .comp-table .ct-note { font-size: 11px; color: #555; line-height: 1.55; }
 
     /* 遊戲新訊 */
     .comp-item { grid-template-columns: 1fr; gap: 0.5rem; padding: 1rem 0; }
